@@ -3,6 +3,18 @@ import React, { useState } from 'react';
 //import axios
 import axios from 'axios';
 //import yup
+import * as yup from 'yup';
+
+//schema for our form
+let schema = yup.object().shape({
+    name: yup.string().required(),
+    size: yup.string().required(),
+    cheese: yup.boolean(),
+    ham: yup.boolean(),
+    olives: yup.boolean(),
+    pineapple: yup.boolean(),
+    instructions: yup.string()
+});
 
 function Form() {
     //state and functions go out here
