@@ -22,9 +22,16 @@ function Form() {
         console.log(formState);
     };
 
+    //function to submit the form and create post request
+    const submitForm = (e) => {
+        e.preventDefault();
+        console.log('Ordered!!!');
+        console.log(formState)
+    };
+
     //the actual form goes in the return statement
     return (
-        <form>
+        <form onSubmit={submitForm}>
             <label htmlFor='name'>
                 Name:
                 <input 
