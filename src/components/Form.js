@@ -1,5 +1,8 @@
 //import React and useState
 import React, { useState } from 'react';
+//import axios
+import axios from 'axios';
+//import yup
 
 function Form() {
     //state and functions go out here
@@ -15,6 +18,11 @@ function Form() {
         instructions: ''
     });
 
+    //state for errors
+
+    //state for returned data from server
+    const [orders, setOrders] = useState([]);
+
     //function to set the state when the input changes
     const inputChanges = (e) => {
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -27,6 +35,16 @@ function Form() {
         e.preventDefault();
         console.log('Ordered!!!');
         console.log(formState)
+        axios
+            .post('https://reqres.in/api/users', formState)
+            .then(response => {
+                console.log(response);
+                setOrders(response);
+                console.log(orders);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     };
 
     //the actual form goes in the return statement
