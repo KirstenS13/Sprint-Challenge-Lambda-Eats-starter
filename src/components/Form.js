@@ -110,6 +110,7 @@ function Form() {
                     value={formState.name}
                     onChange={inputChanges}
                 />
+                {errorState.name.length > 0 ? (<p>{errorState.name}</p>) : null}
             </label>
             <label htmlFor='sizes'>
                 Pizza Size:
@@ -125,7 +126,9 @@ function Form() {
                     <option value='large'>Large</option>
                     <option value='xlarge'>Extra Large</option>
                 </select>
+                {errorState.size.length > 0 ? (<p>{errorState.size}</p>) : null}
             </label>
+            <p>Choose your toppings:</p>
             <label htmlFor='cheese'>
                 Mozzarella Cheese
                 <input 
