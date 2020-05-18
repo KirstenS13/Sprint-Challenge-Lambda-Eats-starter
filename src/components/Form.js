@@ -72,7 +72,6 @@ function Form() {
         //stop page reload
         e.preventDefault();
         console.log('Ordered!!!');
-        console.log(formState)
         //send data to api
         axios
             .post('https://reqres.in/api/users', formState)
