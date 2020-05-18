@@ -4,6 +4,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 //import yup
 import * as yup from 'yup';
+//import styled-components
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+`
+
 
 //schema for our form
 let schema = yup.object().shape({
@@ -98,7 +108,7 @@ function Form() {
 
     //the actual form goes in the return statement
     return (
-        <form onSubmit={submitForm}>
+        <StyledForm onSubmit={submitForm}>
             <label htmlFor='name'>
                 Name:
                 <input 
@@ -180,7 +190,7 @@ function Form() {
                 />
             </label>
             <button data-cy='submit'>Add to Order</button>
-        </form>
+        </StyledForm>
     );
 };
 
