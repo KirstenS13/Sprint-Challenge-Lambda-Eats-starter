@@ -69,19 +69,32 @@ function Form() {
 
     //function to submit the form and create post request
     const submitForm = (e) => {
+        //stop page reload
         e.preventDefault();
         console.log('Ordered!!!');
         console.log(formState)
+        //send data to api
         axios
             .post('https://reqres.in/api/users', formState)
             .then(response => {
                 console.log(response);
-                setOrders(response);
+                //set state for response
+                setOrders([ ...orders, response ]);
                 console.log(orders);
             })
             .catch(err => {
                 console.log(err);
             })
+        //clear the form
+        setFormState({
+            name: '',
+            size: '',
+            cheese: false,
+            ham: false,
+            olives: false,
+            pineapple: false,
+            instructions: ''
+        })
     };
 
     //the actual form goes in the return statement
