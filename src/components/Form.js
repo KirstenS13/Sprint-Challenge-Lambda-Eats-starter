@@ -44,8 +44,24 @@ function Form() {
     //state for returned data from server
     const [orders, setOrders] = useState([]);
 
+    //function to validate form
+    const validateForm = (e) => {
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        yup
+            .reach(schema, e.target.name)
+            .validate(value)
+            .then(valid => {
+                setErrorState({ ...errorState, [e.target.name]: '' });
+            })
+            .catch(err => {
+                setErrorState({ ...errorState, [e.target.name]: err.errors[0] });
+            })
+    };
+
     //function to set the state when the input changes
     const inputChanges = (e) => {
+        e.persist();
+        validateForm(e);
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setFormState({ ...formState, [e.target.name]: value });
         console.log(formState);
