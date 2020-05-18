@@ -6,13 +6,13 @@ function Form() {
 
     //state for the Form
     const [formState, setFormState] = useState({
-        name: null,
-        size: null,
+        name: '',
+        size: '',
         cheese: false,
         ham: false,
         olives: false,
         pineapple: false,
-        instructions: null
+        instructions: ''
     });
 
     //function to set the state when the input changes
@@ -36,14 +36,19 @@ function Form() {
                     onChange={inputChanges}
                 />
             </label>
-            <label htmlFor='size'>
+            <label htmlFor='sizes'>
                 Pizza Size:
-                <select value={formState.size} name='size' id='size'>
-                    <options value=''>Select a size...</options>
-                    <options value='small'>Small</options>
-                    <options value='medium'>Medium</options>
-                    <options value='large'>Large</options>
-                    <options value='xlarge'>Extra Large</options>
+                <select 
+                    value={formState.size} 
+                    name='size' 
+                    id='sizes'
+                    onChange={inputChanges}
+                >
+                    <option value=''>Select a size...</option>
+                    <option value='small'>Small</option>
+                    <option value='medium'>Medium</option>
+                    <option value='large'>Large</option>
+                    <option value='xlarge'>Extra Large</option>
                 </select>
             </label>
             <label htmlFor='cheese'>
@@ -94,6 +99,7 @@ function Form() {
                     onChange={inputChanges}
                 />
             </label>
+            <button>Add to Order</button>
         </form>
     );
 };
