@@ -7,8 +7,8 @@ import * as yup from 'yup';
 
 //schema for our form
 let schema = yup.object().shape({
-    name: yup.string().required(),
-    size: yup.string().required(),
+    name: yup.string().min(2, 'Name must be at least 2 characters').required('Please enter your name'),
+    size: yup.string().required('Please choose a size'),
     cheese: yup.boolean(),
     ham: yup.boolean(),
     olives: yup.boolean(),
@@ -31,6 +31,15 @@ function Form() {
     });
 
     //state for errors
+    const [errorState, setErrorState] = useState({
+        name: '',
+        size: '',
+        cheese: '',
+        ham: '',
+        olives: '',
+        pineapple: '',
+        instructions: ''
+    });
 
     //state for returned data from server
     const [orders, setOrders] = useState([]);
