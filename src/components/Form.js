@@ -108,6 +108,7 @@ function Form() {
                     placeholder='Enter your name...'
                     value={formState.name}
                     onChange={inputChanges}
+                    data-cy='name'
                 />
                 {errorState.name.length > 0 ? (<p>{errorState.name}</p>) : null}
             </label>
@@ -136,6 +137,7 @@ function Form() {
                     id='cheese'
                     checked={formState.cheese}
                     onChange={inputChanges}
+                    data-cy='cheese'
                 />
             </label>
             <label htmlFor='ham'>
@@ -156,6 +158,7 @@ function Form() {
                     id='olives'
                     checked={formState.olives}
                     onChange={inputChanges}
+                    data-cy='olives'
                 />
             </label>
             <label htmlFor='pineapple'>
@@ -176,7 +179,7 @@ function Form() {
                     onChange={inputChanges}
                 />
             </label>
-            <button>Add to Order</button>
+            <button data-cy='submit'>Add to Order</button>
         </form>
     );
 };
